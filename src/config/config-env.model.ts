@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsPositive, IsEnum } from 'class-validator';
+import { IsEnum, IsNumber, IsPositive, IsString } from 'class-validator';
 
 export enum NodeEnv {
   Development = 'development',
@@ -9,11 +9,11 @@ export enum NodeEnv {
 export class ConfigEnv {
   @IsNumber()
   @IsPositive()
-  httpPort: number;
+  httpPort!: number;
 
   @IsString()
   @IsEnum(NodeEnv)
-  nodeEnv: string;
+  nodeEnv!: string;
 
   get isProduction(): boolean {
     return this.nodeEnv === NodeEnv.Production;

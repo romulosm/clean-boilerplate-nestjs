@@ -1,7 +1,8 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import * as dotenv from 'dotenv';
 import { validateSync } from 'class-validator';
+import * as dotenv from 'dotenv';
 import { ConfigEnv, NodeEnv } from './config-env.model';
+
 @Injectable()
 export class ConfigService implements OnModuleInit {
   private readonly logger = new Logger(ConfigService.name);
@@ -15,7 +16,7 @@ export class ConfigService implements OnModuleInit {
     try {
       this.envConfig = this.validateInput(process.env);
     } catch (err) {
-      this.logger.error(err.toString());
+      this.logger.error(err);
       throw err;
     }
   }
